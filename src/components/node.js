@@ -181,6 +181,8 @@ class Node extends React.Component {
     const el = ReactDOM.findDOMNode(this)
     const window = getWindow(el)
     const native = window.getSelection()
+
+    if (!native.anchorNode) return
     scrollToSelection(native)
 
     this.debug('updateScroll', el)
