@@ -35,6 +35,8 @@ const TEXT_RULE = {
     }
 
     if (el.type == 'text') {
+      if (el.data && el.data.match(/<!--.*?-->/)) return
+
       return {
         kind: 'text',
         text: el.data
@@ -159,11 +161,6 @@ class Html {
         case 'object':
           nodes.push(node)
           break
-        case 'null':
-        case 'undefined':
-          return
-        default:
-          throw new Error(`A rule returned an invalid deserialized representation: "${node}".`)
       }
     })
 
@@ -197,7 +194,15 @@ class Html {
     for (const rule of this.rules) {
       if (!rule.deserialize) continue
       const ret = rule.deserialize(element, next)
-      if (!ret) continue
+      const type = typeOf(ret)
+
+      if (type != 'array' && type != 'object' && type != 'null' && type != 'undefined') {
+        throw new Error(`A rule returned an invalid deserialized representation: "${node}".`)
+      }
+
+      if (ret === undefined) continue
+      if (ret === null) return null
+
       node = ret.kind == 'mark' ? this.deserializeMark(ret) : ret
       break
     }
