@@ -17,7 +17,7 @@ import typeOf from 'type-of'
  */
 
 function block(value) {
-  if (value instanceof Block) return value
+  if (value instanceof Block || value.kind === 'block') return value
 
   switch (typeOf(value)) {
     case 'string':
