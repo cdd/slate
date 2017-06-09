@@ -50055,7 +50055,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 function block(value) {
-  if (value instanceof _block2.default) return value;
+  if (value instanceof _block2.default || value.kind === 'block') return value;
 
   switch ((0, _typeOf2.default)(value)) {
     case 'string':
