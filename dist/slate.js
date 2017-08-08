@@ -30361,6 +30361,10 @@ var _reactDom = (window.ReactDOM);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30379,7 +30383,7 @@ var Portal = function (_React$Component) {
   function Portal() {
     _classCallCheck(this, Portal);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Portal).call(this));
+    var _this = _possibleConstructorReturn(this, (Portal.__proto__ || Object.getPrototypeOf(Portal)).call(this));
 
     _this.state = { active: false };
     _this.handleWrapperClick = _this.handleWrapperClick.bind(_this);
@@ -30456,7 +30460,7 @@ var Portal = function (_React$Component) {
   }, {
     key: 'openPortal',
     value: function openPortal() {
-      var props = arguments.length <= 0 || arguments[0] === undefined ? this.props : arguments[0];
+      var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.props;
 
       this.setState({ active: true });
       this.renderPortal(props);
@@ -30467,7 +30471,7 @@ var Portal = function (_React$Component) {
     value: function closePortal() {
       var _this2 = this;
 
-      var isUnmounted = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+      var isUnmounted = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
       var resetPortalState = function resetPortalState() {
         if (_this2.node) {
@@ -30546,15 +30550,15 @@ exports.default = Portal;
 
 
 Portal.propTypes = {
-  children: _react2.default.PropTypes.element.isRequired,
-  openByClickOn: _react2.default.PropTypes.element,
-  closeOnEsc: _react2.default.PropTypes.bool,
-  closeOnOutsideClick: _react2.default.PropTypes.bool,
-  isOpened: _react2.default.PropTypes.bool,
-  onOpen: _react2.default.PropTypes.func,
-  onClose: _react2.default.PropTypes.func,
-  beforeClose: _react2.default.PropTypes.func,
-  onUpdate: _react2.default.PropTypes.func
+  children: _propTypes2.default.element.isRequired,
+  openByClickOn: _propTypes2.default.element,
+  closeOnEsc: _propTypes2.default.bool,
+  closeOnOutsideClick: _propTypes2.default.bool,
+  isOpened: _propTypes2.default.bool,
+  onOpen: _propTypes2.default.func,
+  onClose: _propTypes2.default.func,
+  beforeClose: _propTypes2.default.func,
+  onUpdate: _propTypes2.default.func
 };
 
 Portal.defaultProps = {
@@ -30564,7 +30568,7 @@ Portal.defaultProps = {
 };
 module.exports = exports['default'];
 
-},{}],150:[function(require,module,exports){
+},{"prop-types":147}],150:[function(require,module,exports){
 module.exports = require('./lib/_stream_duplex.js');
 
 },{"./lib/_stream_duplex.js":151}],151:[function(require,module,exports){
@@ -37177,11 +37181,22 @@ var Node = {
    */
 
   getBlocksAtRangeAsArray: function getBlocksAtRangeAsArray(range) {
-    var _this = this;
+    range = range.normalize(this);
+    var _range = range,
+        startKey = _range.startKey,
+        endKey = _range.endKey;
 
-    return this.getTextsAtRangeAsArray(range).map(function (text) {
-      return _this.getClosestBlock(text.key);
-    });
+    var startBlock = this.getClosestBlock(startKey);
+
+    // PERF: the most common case is when the range is in a single block node,
+    // where we can avoid a lot of iterating of the tree.
+    if (startKey == endKey) return [startBlock];
+
+    var endBlock = this.getClosestBlock(endKey);
+    var blocks = this.getBlocksAsArray();
+    var start = blocks.indexOf(startBlock);
+    var end = blocks.indexOf(endBlock);
+    return blocks.slice(start, end + 1);
   },
 
 
@@ -37729,10 +37744,10 @@ var Node = {
    */
 
   getInlinesAtRangeAsArray: function getInlinesAtRangeAsArray(range) {
-    var _this2 = this;
+    var _this = this;
 
     return this.getTextsAtRangeAsArray(range).map(function (text) {
-      return _this2.getClosestInline(text.key);
+      return _this.getClosestInline(text.key);
     }).filter(function (exists) {
       return exists;
     });
@@ -37881,9 +37896,9 @@ var Node = {
 
   getMarksAtRangeAsArray: function getMarksAtRangeAsArray(range) {
     range = range.normalize(this);
-    var _range = range,
-        startKey = _range.startKey,
-        startOffset = _range.startOffset;
+    var _range2 = range,
+        startKey = _range2.startKey,
+        startOffset = _range2.startOffset;
 
     // If the range is collapsed at the start of the node, check the previous.
 
@@ -38062,9 +38077,9 @@ var Node = {
       throw new Error('The range must be collapsed to calculcate its offset.');
     }
 
-    var _range2 = range,
-        startKey = _range2.startKey,
-        startOffset = _range2.startOffset;
+    var _range3 = range,
+        startKey = _range3.startKey,
+        startOffset = _range3.startOffset;
 
     return this.getOffset(startKey) + startOffset;
   },
@@ -38281,9 +38296,9 @@ var Node = {
 
   getTextsAtRangeAsArray: function getTextsAtRangeAsArray(range) {
     range = range.normalize(this);
-    var _range3 = range,
-        startKey = _range3.startKey,
-        endKey = _range3.endKey;
+    var _range4 = range,
+        startKey = _range4.startKey,
+        endKey = _range4.endKey;
 
     var startText = this.getDescendant(startKey);
 
@@ -38457,13 +38472,13 @@ var Node = {
    */
 
   mapChildren: function mapChildren(iterator) {
-    var _this3 = this;
+    var _this2 = this;
 
     var nodes = this.nodes;
 
 
     nodes.forEach(function (node, i) {
-      var ret = iterator(node, i, _this3.nodes);
+      var ret = iterator(node, i, _this2.nodes);
       if (ret != node) nodes = nodes.set(ret.key, ret);
     });
 
@@ -38480,7 +38495,7 @@ var Node = {
    */
 
   mapDescendants: function mapDescendants(iterator) {
-    var _this4 = this;
+    var _this3 = this;
 
     var nodes = this.nodes;
 
@@ -38488,7 +38503,7 @@ var Node = {
     nodes.forEach(function (node, i) {
       var ret = node;
       if (ret.kind != 'text') ret = ret.mapDescendants(iterator);
-      ret = iterator(ret, i, _this4.nodes);
+      ret = iterator(ret, i, _this3.nodes);
       if (ret == node) return;
 
       var index = nodes.indexOf(node);
@@ -38878,8 +38893,8 @@ var Node = {
     range = range.normalize(this);
     if (range.isExpanded) throw new Error();
 
-    var _range4 = range,
-        startKey = _range4.startKey;
+    var _range5 = range,
+        startKey = _range5.startKey;
 
     var start = this.getFurthestInline(startKey) || this.getDescendant(startKey);
     return range.isAtStartOf(start) || range.isAtEndOf(start);
