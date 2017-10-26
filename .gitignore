@@ -1,5 +1,5 @@
 # Build files.
-dist
+# dist -- we're checking in files for deployment
 examples/build.dev.js
 examples/build.prod.js
 lib
