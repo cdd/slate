@@ -2,7 +2,7 @@
 # dist -- we're checking in files for deployment
 examples/build.dev.js
 examples/build.prod.js
-lib
+# lib -- we're checking in files for development
 
 # Temporary files.
 bench/output
