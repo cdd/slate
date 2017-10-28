@@ -295,8 +295,7 @@ Editor.propTypes = {
   spellCheck: _propTypes2.default.bool,
   state: _slatePropTypes2.default.state.isRequired,
   style: _propTypes2.default.object,
-  tabIndex: _propTypes2.default.number
-};
+  tabIndex: _propTypes2.default.number };
 Editor.defaultProps = {
   autoFocus: false,
   autoCorrect: true,
@@ -304,8 +303,7 @@ Editor.defaultProps = {
   plugins: [],
   readOnly: false,
   schema: {},
-  spellCheck: true
-};
+  spellCheck: true };
 
 var _initialiseProps = function _initialiseProps() {
   var _this2 = this;

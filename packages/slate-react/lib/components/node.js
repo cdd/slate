@@ -151,11 +151,11 @@ var Node = function (_React$Component) {
 
       // Attributes that the developer must to mix into the element in their
       // custom node renderer component.
-      var attributes = { 'data-key': node.key };
+      var attributes = { 'data-key': node.key
 
-      // If it's a block node with inline children, add the proper `dir` attribute
-      // for text direction.
-      if (node.kind == 'block' && node.nodes.first().kind != 'block') {
+        // If it's a block node with inline children, add the proper `dir` attribute
+        // for text direction.
+      };if (node.kind == 'block' && node.nodes.first().kind != 'block') {
         var direction = node.getTextDirection();
         if (direction == 'rtl') attributes.dir = 'rtl';
       }
@@ -212,8 +212,7 @@ Node.propTypes = {
   parent: _slatePropTypes2.default.node.isRequired,
   readOnly: _propTypes2.default.bool.isRequired,
   schema: _slatePropTypes2.default.schema.isRequired,
-  state: _slatePropTypes2.default.state.isRequired
-};
+  state: _slatePropTypes2.default.state.isRequired };
 
 var _initialiseProps = function _initialiseProps() {
   var _this3 = this;

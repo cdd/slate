@@ -506,12 +506,10 @@ Content.propTypes = {
   state: _slatePropTypes2.default.state.isRequired,
   style: _propTypes2.default.object,
   tabIndex: _propTypes2.default.number,
-  tagName: _propTypes2.default.string
-};
+  tagName: _propTypes2.default.string };
 Content.defaultProps = {
   style: {},
-  tagName: 'div'
-};
+  tagName: 'div' };
 _eventHandlers2.default.forEach(function (handler) {
   Content.propTypes[handler] = _propTypes2.default.func.isRequired;
 });

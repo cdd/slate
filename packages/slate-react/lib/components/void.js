@@ -148,8 +148,7 @@ Void.propTypes = {
   parent: _slatePropTypes2.default.node.isRequired,
   readOnly: _propTypes2.default.bool.isRequired,
   schema: _slatePropTypes2.default.schema.isRequired,
-  state: _slatePropTypes2.default.state.isRequired
-};
+  state: _slatePropTypes2.default.state.isRequired };
 
 var _initialiseProps = function _initialiseProps() {
   var _this2 = this;

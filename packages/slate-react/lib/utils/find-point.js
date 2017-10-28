@@ -122,6 +122,9 @@ function normalizeNodeAndOffset(node, offset) {
 
   if (node.textContent.includes('\u200B') || node.textContent.includes('\u200A')) {
     offset = offset - 1;
+    if (offset < 0) {
+      offset = 0;
+    }
   }
 
   // Return the node and offset.

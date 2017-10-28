@@ -829,15 +829,14 @@ function AfterPlugin() {
       },
       placeholder: _defaultPlaceholder2.default
     }]
-  };
 
-  /**
-   * Return the plugin.
-   *
-   * @type {Object}
-   */
+    /**
+     * Return the plugin.
+     *
+     * @type {Object}
+     */
 
-  return {
+  };return {
     onBeforeChange: onBeforeChange,
     onBeforeInput: onBeforeInput,
     onBlur: onBlur,

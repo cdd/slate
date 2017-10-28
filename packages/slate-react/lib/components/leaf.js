@@ -237,8 +237,7 @@ Leaf.propTypes = {
   parent: _slatePropTypes2.default.node.isRequired,
   schema: _slatePropTypes2.default.schema.isRequired,
   state: _slatePropTypes2.default.state.isRequired,
-  text: _propTypes2.default.string.isRequired
-};
+  text: _propTypes2.default.string.isRequired };
 
 var _initialiseProps = function _initialiseProps() {
   var _this2 = this;

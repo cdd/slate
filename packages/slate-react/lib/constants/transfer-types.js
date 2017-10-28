@@ -16,12 +16,11 @@ var TRANSFER_TYPES = {
   NODE: 'application/x-slate-node',
   RICH: 'text/rtf',
   TEXT: 'text/plain'
-};
 
-/**
- * Export.
- *
- * @type {Object}
- */
+  /**
+   * Export.
+   *
+   * @type {Object}
+   */
 
-exports.default = TRANSFER_TYPES;
+};exports.default = TRANSFER_TYPES;

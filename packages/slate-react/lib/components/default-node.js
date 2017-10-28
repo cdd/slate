@@ -92,6 +92,5 @@ DefaultNode.propTypes = {
   node: _slatePropTypes2.default.node.isRequired,
   parent: _slatePropTypes2.default.node.isRequired,
   readOnly: _propTypes2.default.bool.isRequired,
-  state: _slatePropTypes2.default.state.isRequired
-};
+  state: _slatePropTypes2.default.state.isRequired };
 exports.default = DefaultNode;
