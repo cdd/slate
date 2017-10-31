@@ -338,7 +338,7 @@ class Text extends Record(DEFAULTS) {
 
   getMarksAsArray() {
     return this.characters.reduce((array, char) => {
-      return array.concat(char.marks.toArray())
+      return array.concat(char ? char.marks.toArray() : [])
     }, [])
   }
 

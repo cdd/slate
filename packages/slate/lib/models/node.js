@@ -1101,19 +1101,20 @@ var Node = function () {
         var previous = this.getPreviousText(startKey);
         if (!previous || previous.text.length == 0) return [];
         var char = previous.characters.get(previous.text.length - 1);
-        return char.marks.toArray();
+        return char ? char.marks.toArray() : [];
       }
 
       // If the range is collapsed, check the character before the start.
       if (range.isCollapsed) {
         var text = this.getDescendant(startKey);
         var _char = text.characters.get(range.startOffset - 1);
-        return _char.marks.toArray();
+        return _char ? _char.marks.toArray() : [];
       }
 
       // Otherwise, get a set of the marks for each character in the range.
       return this.getCharactersAtRange(range).reduce(function (memo, char) {
-        char.marks.toArray().forEach(function (c) {
+        var marks = char ? char.marks.toArray() : [];
+        marks.forEach(function (c) {
           return memo.push(c);
         });
         return memo;

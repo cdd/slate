@@ -71,6 +71,12 @@ function findPoint(nativeNode, nativeOffset, state) {
       offset = node.textContent.length;
     }
 
+  // COMPAT: If the parent node is a Slate zero-width space, this is because the
+  // text node has no characters, so the offset can only be zero.
+  if (offset != 0 && parentNode.getAttribute('data-slate-zero-width')) {
+    offset = 0;
+  }
+
   // Get the string value of the offset key attribute.
   var offsetKey = rangeNode.getAttribute(OFFSET_KEY_ATTRIBUTE);
   if (!offsetKey) return null;
@@ -118,13 +124,6 @@ function normalizeNodeAndOffset(node, offset) {
 
     // Determine the new offset inside the text node.
     offset = isLast ? node.textContent.length : 0;
-  }
-
-  if (node.textContent.includes('\u200B') || node.textContent.includes('\u200A')) {
-    offset = offset - 1;
-    if (offset < 0) {
-      offset = 0;
-    }
   }
 
   // Return the node and offset.

@@ -256,7 +256,7 @@ var Text = function (_Record) {
     key: 'getMarksAsArray',
     value: function getMarksAsArray() {
       return this.characters.reduce(function (array, char) {
-        return array.concat(char.marks.toArray());
+        return array.concat(char ? char.marks.toArray() : []);
       }, []);
     }
 

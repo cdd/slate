@@ -625,48 +625,52 @@ function AfterPlugin() {
     // an inline is selected, we need to handle these hotkeys manually because
     // browsers won't know what to do.
     if (_hotkeys2.default.COLLAPSE_CHAR_BACKWARD(event)) {
-      var isInVoid = state.isInVoid,
+      var document = state.document,
+          isInVoid = state.isInVoid,
           previousText = state.previousText,
-          document = state.document;
+          startText = state.startText;
 
       var isPreviousInVoid = previousText && document.hasVoidParent(previousText.key);
-      if (isInVoid || isPreviousInVoid) {
+      if (isInVoid || isPreviousInVoid || startText.text == '') {
         event.preventDefault();
         return change.collapseCharBackward();
       }
     }
 
     if (_hotkeys2.default.COLLAPSE_CHAR_FORWARD(event)) {
-      var _isInVoid = state.isInVoid,
+      var _document = state.document,
+          _isInVoid = state.isInVoid,
           nextText = state.nextText,
-          _document = state.document;
+          _startText = state.startText;
 
       var isNextInVoid = nextText && _document.hasVoidParent(nextText.key);
-      if (_isInVoid || isNextInVoid) {
+      if (_isInVoid || isNextInVoid || _startText.text == '') {
         event.preventDefault();
         return change.collapseCharForward();
       }
     }
 
     if (_hotkeys2.default.EXTEND_CHAR_BACKWARD(event)) {
-      var _isInVoid2 = state.isInVoid,
+      var _document2 = state.document,
+          _isInVoid2 = state.isInVoid,
           _previousText = state.previousText,
-          _document2 = state.document;
+          _startText2 = state.startText;
 
       var _isPreviousInVoid = _previousText && _document2.hasVoidParent(_previousText.key);
-      if (_isInVoid2 || _isPreviousInVoid) {
+      if (_isInVoid2 || _isPreviousInVoid || _startText2.text == '') {
         event.preventDefault();
         return change.extendCharBackward();
       }
     }
 
     if (_hotkeys2.default.EXTEND_CHAR_FORWARD(event)) {
-      var _isInVoid3 = state.isInVoid,
+      var _document3 = state.document,
+          _isInVoid3 = state.isInVoid,
           _nextText = state.nextText,
-          _document3 = state.document;
+          _startText3 = state.startText;
 
       var _isNextInVoid = _nextText && _document3.hasVoidParent(_nextText.key);
-      if (_isInVoid3 || _isNextInVoid) {
+      if (_isInVoid3 || _isNextInVoid || _startText3.text == '') {
         event.preventDefault();
         return change.extendCharForward();
       }

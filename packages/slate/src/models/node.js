@@ -1057,21 +1057,22 @@ class Node {
       const previous = this.getPreviousText(startKey)
       if (!previous || previous.text.length == 0) return []
       const char = previous.characters.get(previous.text.length - 1)
-      return char.marks.toArray()
+      return char ? char.marks.toArray() : []
     }
 
     // If the range is collapsed, check the character before the start.
     if (range.isCollapsed) {
       const text = this.getDescendant(startKey)
       const char = text.characters.get(range.startOffset - 1)
-      return char.marks.toArray()
+      return char ? char.marks.toArray() : []
     }
 
     // Otherwise, get a set of the marks for each character in the range.
     return this
       .getCharactersAtRange(range)
       .reduce((memo, char) => {
-        char.marks.toArray().forEach(c => memo.push(c))
+        const marks = char ? char.marks.toArray() : []
+        marks.forEach(c => memo.push(c))
         return memo
       }, [])
   }
