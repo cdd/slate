@@ -41,14 +41,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var DEFAULTS = {
   data: new _immutable.Map(),
   type: undefined
+
+  /**
+   * Mark.
+   *
+   * @type {Mark}
+   */
+
 };
-
-/**
- * Mark.
- *
- * @type {Mark}
- */
-
 var Mark = function (_Record) {
   _inherits(Mark, _Record);
 

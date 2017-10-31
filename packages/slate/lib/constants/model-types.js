@@ -24,12 +24,11 @@ var MODEL_TYPES = {
   STACK: '@@__SLATE_STACK__@@',
   STATE: '@@__SLATE_STATE__@@',
   TEXT: '@@__SLATE_TEXT__@@'
-};
 
-/**
- * Export.
- *
- * @type {Object}
- */
+  /**
+   * Export.
+   *
+   * @type {Object}
+   */
 
-exports.default = MODEL_TYPES;
+};exports.default = MODEL_TYPES;

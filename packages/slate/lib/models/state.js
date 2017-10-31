@@ -62,14 +62,14 @@ var DEFAULTS = {
   history: _history2.default.create(),
   data: new _immutable.Map(),
   decorations: null
+
+  /**
+   * State.
+   *
+   * @type {State}
+   */
+
 };
-
-/**
- * State.
- *
- * @type {State}
- */
-
 var State = function (_Record) {
   _inherits(State, _Record);
 

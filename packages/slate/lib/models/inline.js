@@ -53,14 +53,14 @@ var DEFAULTS = {
   key: undefined,
   nodes: new _immutable.List(),
   type: undefined
+
+  /**
+   * Inline.
+   *
+   * @type {Inline}
+   */
+
 };
-
-/**
- * Inline.
- *
- * @type {Inline}
- */
-
 var Inline = function (_Record) {
   _inherits(Inline, _Record);
 

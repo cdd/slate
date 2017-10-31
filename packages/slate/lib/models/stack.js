@@ -45,14 +45,14 @@ var debug = (0, _debug2.default)('slate:stack');
 var DEFAULTS = {
   plugins: [],
   schema: new _schema3.default()
+
+  /**
+   * Stack.
+   *
+   * @type {Stack}
+   */
+
 };
-
-/**
- * Stack.
- *
- * @type {Stack}
- */
-
 var Stack = function (_Record) {
   _inherits(Stack, _Record);
 

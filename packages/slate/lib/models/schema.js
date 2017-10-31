@@ -56,14 +56,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var DEFAULTS = {
   rules: []
+
+  /**
+   * Schema.
+   *
+   * @type {Schema}
+   */
+
 };
-
-/**
- * Schema.
- *
- * @type {Schema}
- */
-
 var Schema = function (_Record) {
   _inherits(Schema, _Record);
 

@@ -41,14 +41,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var DEFAULTS = {
   marks: new _immutable.Set(),
   text: ''
+
+  /**
+   * Leaf.
+   *
+   * @type {Leaf}
+   */
+
 };
-
-/**
- * Leaf.
- *
- * @type {Leaf}
- */
-
 var Leaf = function (_Record) {
   _inherits(Leaf, _Record);
 

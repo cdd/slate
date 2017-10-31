@@ -22,15 +22,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @type {Object}
  */
 
-var OPTS = { normalize: false };
+var OPTS = { normalize: false
 
-/**
- * Define the core schema rules, order-sensitive.
- *
- * @type {Array}
- */
+  /**
+   * Define the core schema rules, order-sensitive.
+   *
+   * @type {Array}
+   */
 
-var rules = [
+};var rules = [
 
 /**
  * Only allow block nodes in documents.

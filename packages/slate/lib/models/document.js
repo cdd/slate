@@ -53,14 +53,14 @@ var DEFAULTS = {
   data: new _immutable.Map(),
   key: undefined,
   nodes: new _immutable.List()
+
+  /**
+   * Document.
+   *
+   * @type {Document}
+   */
+
 };
-
-/**
- * Document.
- *
- * @type {Document}
- */
-
 var Document = function (_Record) {
   _inherits(Document, _Record);
 

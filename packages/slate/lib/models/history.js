@@ -49,14 +49,14 @@ var debug = (0, _debug2.default)('slate:history');
 var DEFAULTS = {
   redos: new _immutable.Stack(),
   undos: new _immutable.Stack()
+
+  /**
+   * History.
+   *
+   * @type {History}
+   */
+
 };
-
-/**
- * History.
- *
- * @type {History}
- */
-
 var History = function (_Record) {
   _inherits(History, _Record);
 

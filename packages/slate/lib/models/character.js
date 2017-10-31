@@ -37,14 +37,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var DEFAULTS = {
   marks: new _immutable.Set(),
   text: ''
+
+  /**
+   * Character.
+   *
+   * @type {Character}
+   */
+
 };
-
-/**
- * Character.
- *
- * @type {Character}
- */
-
 var Character = function (_Record) {
   _inherits(Character, _Record);
 

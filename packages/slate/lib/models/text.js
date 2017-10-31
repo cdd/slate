@@ -57,14 +57,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var DEFAULTS = {
   characters: new _immutable.List(),
   key: undefined
+
+  /**
+   * Text.
+   *
+   * @type {Text}
+   */
+
 };
-
-/**
- * Text.
- *
- * @type {Text}
- */
-
 var Text = function (_Record) {
   _inherits(Text, _Record);
 

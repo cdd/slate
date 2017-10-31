@@ -53,14 +53,14 @@ var DEFAULTS = {
   key: undefined,
   nodes: new _immutable.List(),
   type: undefined
+
+  /**
+   * Block.
+   *
+   * @type {Block}
+   */
+
 };
-
-/**
- * Block.
- *
- * @type {Block}
- */
-
 var Block = function (_Record) {
   _inherits(Block, _Record);
 

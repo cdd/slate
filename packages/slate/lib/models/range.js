@@ -48,14 +48,14 @@ var DEFAULTS = {
   isBackward: null,
   isFocused: false,
   marks: null
+
+  /**
+   * Range.
+   *
+   * @type {Range}
+   */
+
 };
-
-/**
- * Range.
- *
- * @type {Range}
- */
-
 var Range = function (_Record) {
   _inherits(Range, _Record);
 
