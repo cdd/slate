@@ -15903,6 +15903,15 @@ function AfterPlugin() {
     div.setAttribute('contenteditable', true);
     div.style.position = 'absolute';
     div.style.left = '-9999px';
+
+    // COMPAT: In Firefox, the viewport jumps to find the phony div, so it
+    // should be created at the current scroll offset with `style.top`.
+    // The box model attributes which can interact with 'top' are also reset.
+    div.style.border = '0px';
+    div.style.padding = '0px';
+    div.style.margin = '0px';
+    div.style.top = (window.pageYOffset || window.document.documentElement.scrollTop) + 'px';
+
     div.appendChild(contents);
     body.appendChild(div);
 
@@ -17620,7 +17629,10 @@ function getType(transfer, type) {
     return type == TEXT ? transfer.getData('Text') || null : null;
   }
 
-  return transfer.types.indexOf(type) !== -1 ? transfer.getData(type) || null : null;
+  // COMPAT: In Edge, transfer.types doesn't respond to `indexOf`. (2017/10/25)
+  var types = Array.from(transfer.types);
+
+  return types.indexOf(type) !== -1 ? transfer.getData(type) || null : null;
 }
 
 /**
