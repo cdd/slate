@@ -11278,6 +11278,8 @@ function parseHotkey(hotkey, options) {
  */
 
 function compareHotkey(object, event) {
+  console.error(event.key, event.which, event.charCode)
+
   for (var key in object) {
     var expected = object[key];
     var actual = void 0;
@@ -11299,8 +11301,7 @@ function compareHotkey(object, event) {
       actual = event[key];
     }
 
-    console.warn(key, expected, actual)
-    console.warn(event.key, event.which, event.charCode)
+    console.error(key, expected, actual)
 
     if (actual != expected) return false;
   }
