@@ -11286,11 +11286,21 @@ function compareHotkey(object, event) {
 
     if (key == 'key') {
       actual = event.key.toLowerCase();
+
+      // HACK: Selenium cmd+z workaround
+      // For some reason, the cmd+z event appears to be malformed when coming
+      // from selenium.
+      if (actual == 'unidentified') {
+        actual = String.fromCharCode(event.which).toLowerCase();
+      }
     } else if (key == 'which') {
       actual = expected == 91 && event.which == 93 ? 91 : event.which;
     } else {
       actual = event[key];
     }
+
+    console.warn(key, expected, actual)
+    console.warn(event.key, event.which, event.charCode)
 
     if (actual != expected) return false;
   }
@@ -11326,6 +11336,7 @@ exports.parseHotkey = parseHotkey;
 exports.compareHotkey = compareHotkey;
 exports.toKeyCode = toKeyCode;
 exports.toKeyName = toKeyName;
+
 },{}],17:[function(require,module,exports){
 "use strict";
 
